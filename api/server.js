@@ -20,7 +20,7 @@ server.use('/api/auth', authRouter);
 server.use('/api/jokes', jokesRouter);
 
 server.get('/', (req, res) => {
-    res.status(200).json('Server is live!');
+    res.send('Server is live!');
 })
 
 module.exports = server
