@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 // Routers & local middleware
 const authRouter = require('../auth/auth-router.js');
-const jokesRouter = require('../jokes/jokes-router.js');
+// const jokesRouter = require('../jokes/jokes-router.js');
 
 const server = express();
 
@@ -17,7 +17,7 @@ server.use(express.json());
 
 // base endpoints
 server.use('/api/auth', authRouter);
-server.use('/api/jokes', jokesRouter);
+// server.use('/api/jokes', jokesRouter);
 
 server.get('/', (req, res) => {
     res.status(200).json('Server is live!');
