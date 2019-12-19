@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -9,6 +11,7 @@ const jokesRouter = require('../jokes/jokes-router.js');
 
 const server = express();
 
+// middleware
 server.use(helmet());
 server.use(morgan("dev"))
 server.use(cors());
