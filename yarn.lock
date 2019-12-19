@@ -3502,6 +3502,11 @@ nocache@2.1.0:
   resolved "https://registry.yarnpkg.com/nocache/-/nocache-2.1.0.tgz#120c9ffec43b5729b1d5de88cd71aa75a0ba491f"
   integrity sha512-0L9FvHG3nfnnmaEQPjT9xhfN4ISk0A8/2j4M37Np4mcDesJjHgEUfgPhdCyZuFI954tjokaIj/A3NdpFNdEh4Q==
 
+node-bin-setup@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
+  integrity sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q==
+
 node-fetch@^2.2.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
@@ -3538,6 +3543,13 @@ node-pre-gyp@^0.11.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
+
+node@^13.5.0:
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-13.5.0.tgz#965763f1c92b7fd40aaaea4c3ebd0160a086aae1"
+  integrity sha512-LjtOaRZ4p06C9s01dgOmK8pW0SNtxIZIRy3FvItbsfadMbWgqwKn7OktppBmAuLsVJ/AnV29oR5m5rXejJTDNQ==
+  dependencies:
+    node-bin-setup "^1.0.0"
 
 nodemon@^2.0.2:
   version "2.0.2"
