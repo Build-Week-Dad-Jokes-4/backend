@@ -21,39 +21,39 @@ router.post('/register', (req, res) => {
         })
 })
 
-// router.post('/login', (req, res) => {
-//     let {username, password} = req.body;
+router.post('/login', (req, res) => {
+    let {username, password} = req.body;
     
-//     Users.findBy({ username })
-//     .first()
-//     .then(user => {
-//         if (user && bcrypt.compareSync(password, user.password)) {
-//             const token = getJwtToken(user);
+    Users.findBy({ username })
+    .first()
+    .then(user => {
+        if (user && bcrypt.compareSync(password, user.password)) {
+            const token = getJwtToken(user);
     
-//             res.status(200).json({
-//               message: `Welcome ${user.username}, have a token.`,
-//               token
-//             });
-//           } else {
-//             res.status(401).json({ message: 'Invalid Credentials' });
-//           }
-//     })
-//     .catch(error => {
-//         res.status(500).json(error);
-//       });
-// })
+            res.status(200).json({
+              message: `Welcome ${user.username}, have a token.`,
+              token
+            });
+          } else {
+            res.status(401).json({ message: 'Invalid Credentials' });
+          }
+    })
+    .catch(error => {
+        res.status(500).json(error);
+      });
+})
 
-// function getJwtToken(user) {
-//     const payload = {
-//       subject: user.id,
-//       username: user.username, 
-//     };
+function getJwtToken(user) {
+    const payload = {
+      subject: user.id,
+      username: user.username, 
+    };
   
-//     const options = {
-//       expiresIn: '1hr'
-//     };
+    const options = {
+      expiresIn: '1hr'
+    };
   
-//       return jwt.sign(payload, secrets.jwtSecret, options)
-//   }
+      return jwt.sign(payload, secrets.jwtSecret, options)
+  }
 
 module.exports = router;

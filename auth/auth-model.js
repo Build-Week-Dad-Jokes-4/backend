@@ -2,9 +2,9 @@ const db = require('../database/dbConfig.js');
 
 module.exports = {
     add,
-    // find,
+    find,
     findBy,
-    // findById
+    findById
 }
 
 async function add(user) {
@@ -13,16 +13,16 @@ async function add(user) {
     return findById(id);
 }
 
-// function find() {
-//     return db('users').select('id', 'username', 'password');
-//   }
+function find() {
+    return db('users').select('id', 'username', 'password');
+  }
 
 function findBy(filter) {
     return db('users').where(filter);
 }
 
-// function findById(id) {
-//     return db('users')
-//       .where({ id })
-//       .first();
-//   }
+function findById(id) {
+    return db('users')
+      .where({ id })
+      .first();
+  }
