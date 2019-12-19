@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 // Routers & local middleware
 const authRouter = require('../auth/auth-router.js');
-// const jokesRouter = require('../jokes/jokes-router.js');
+const jokesRouter = require('../jokes/jokes-router.js');
 
 const server = express();
 
