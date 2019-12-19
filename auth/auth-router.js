@@ -53,8 +53,7 @@ function getJwtToken(user) {
       expiresIn: '1hr'
     };
   
-    //? s16 secret.jwtSecret
-    return jwt.sign(payload, secrets.jwtSecret, options)
+      return jwt.sign(payload, secrets.jwtSecret, options)
   }
 
 module.exports = router;

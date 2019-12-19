@@ -18,7 +18,7 @@ server.use(express.json());
 
 // base endpoints
 server.use('/api/auth', authRouter);
-// server.use('/api/jokes', authenticate, jokesRouter);
+server.use('/api/jokes', authenticate, jokesRouter);
 
 server.get('/', (req, res) => {
     res.status(200).json('Server is live!');
