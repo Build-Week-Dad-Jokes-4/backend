@@ -8,7 +8,6 @@ const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const jokesRouter = require('../jokes/jokes-router.js');
 
-
 const server = express();
 
 server.use(helmet());
@@ -24,7 +23,7 @@ server.get('/', (req, res) => {
     res.status(200).json('Server is live!');
 })
 
-module.exports =server
+module.exports = server
 
 
 
