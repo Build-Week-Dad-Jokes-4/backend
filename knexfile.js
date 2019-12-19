@@ -1,4 +1,13 @@
 // Update with your config settings.
+require('dotenv').config();
+
+localPbConnection = {
+  host: 'localhost',
+  database: 'Database',
+  user: process.env.DB_USERS,
+  password: process.env.DB_PASS
+};
+const prodDbConnection = process.env.DATABASE_URL || localPbConnection;
 
 module.exports = {
   development: {
@@ -22,11 +31,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10
-    },
+    connection: prodDbConnection,
     migrations: {
       directory: './database/migrations'
     },
