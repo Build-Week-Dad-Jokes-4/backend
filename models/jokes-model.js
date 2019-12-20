@@ -1,18 +1,35 @@
 const db = require('../database/dbConfig.js');
 
 module.exports = {
-    addJoke,
-    findJoke,
-    findJokes,
-    findJokeById,
-    updateJoke,
-    removeJoke
-}
+  addJoke,
+  findJoke,
+  findJokes,
+  findJokeById,
+  updateJoke,
+  removeJoke
+};
 
 async function addJoke(joke) {
-    const[id] = await db('jokes').insert(joke);
-    return findJoke(id);
+  const [id] = await db('jokes').insert(joke);
+  return findJoke(id);
 }
+
+// function addJoke(joke){
+//     console.log(joke)
+//     return db('recipes').insert(joke)
+// }
+
+// function addJoke(jokeData) {
+//     return db('jokes')
+//         .insert(jokeData, 'id')
+//         .then(([id]) => {
+//             return db('jokes')
+//                 .where({ id })
+//                 .then(jokeEntry => {
+//                     return jokeEntry
+//                 })
+//         })
+// }
 
 function findJoke(id) {
     return db('jokes')
@@ -30,25 +47,25 @@ function findJoke(id) {
 }
 
 function findJokes() {
-    return db('jokes')
+  return db('jokes')
     .select()
-    .table('jokes')
+    .table('jokes');
 }
 
 function findJokeById(id) {
-    return db('jokes')
-    .where({id})
+  return db('jokes')
+    .where({ id })
     .first();
 }
 
 function updateJoke(id, changes) {
-    return db('jokes')
-    .where({id})
-    .update(changes, '*')
+  return db('jokes')
+    .where({ id })
+    .update(changes, '*');
 }
 
 function removeJoke(id) {
-    return db('jokes')
-    .where({id})
+  return db('jokes')
+    .where({ id })
     .del();
 }

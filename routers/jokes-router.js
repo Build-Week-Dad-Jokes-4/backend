@@ -6,7 +6,7 @@ const authenticate = require('../middleware/authenticate-middleware.js');
 
 // POST JOKES
 router.post('/add', (req, res) => {
-  const joke = req.body;
+  const joke = (req.body);
 
   Jokes.addJoke(joke)
     .then(newJoke => {
