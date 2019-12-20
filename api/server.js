@@ -4,8 +4,8 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 // Routers 
-const authRouter = require('../auth/auth-router.js');
-const jokesRouter = require('../jokes/jokes-router.js');
+const authRouter = require('../routers/auth-router.js');
+const jokesRouter = require('../routers/jokes-router.js');
 
 const server = express();
 
