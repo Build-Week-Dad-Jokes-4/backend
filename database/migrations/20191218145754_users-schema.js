@@ -1,14 +1,14 @@
-
 exports.up = function(knex) {
-    return knex.schema.createTable('users', users => {
-        users.increments();
+  return knex.schema
+    .createTable('users', users => {
+      users.increments();
 
-        users
-            .string('username', 128)
-            .notNullable()
-            .unique();
-            users.string('password', 128).notNullable();
-    })  
+      users
+        .string('username', 128)
+        .notNullable()
+        .unique();
+      users.string('password', 128).notNullable();
+    })
 
     .createTable('jokes', tbl => {
       tbl.increments();
@@ -26,10 +26,10 @@ exports.up = function(knex) {
         .boolean('public')
         .notNullable()
         .defaultTo(false);
-        
+
       tbl
         .integer('user_id')
-        .unsigned()       
+        .unsigned()
         .references('id')
         .inTable('users')
         .onUpdate('CASCADE')
@@ -39,5 +39,4 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists('jokes').dropTableIfExists('users');
-
 };

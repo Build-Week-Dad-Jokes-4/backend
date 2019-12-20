@@ -5,26 +5,23 @@ module.exports = {
   find,
   findBy,
   findById,
-  findUser,
+  findUser
 };
 
 function find() {
   return db('users').select('id', 'username', 'password');
 }
 
-
 function findBy(filter) {
   // make sure to include the role information
   return db('users').where(filter);
 }
-
 
 async function add(user) {
   const [id] = await db('users').insert(user);
 
   return findById(id);
 }
-
 
 function findById(id) {
   return db('users')
@@ -33,9 +30,9 @@ function findById(id) {
 }
 
 function findUser(id) {
-  return db("users")
+  return db('users')
     .where({ id })
-    .select("id", "username")
-    .orderBy("id")
+    .select('id', 'username')
+    .orderBy('id')
     .first();
 }
