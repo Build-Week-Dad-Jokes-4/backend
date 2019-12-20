@@ -5,7 +5,8 @@ module.exports = {
     findJoke,
     findJokes,
     findJokeById,
-    updateJoke
+    updateJoke,
+    removeJoke
 }
 
 async function addJoke(joke) {
@@ -44,4 +45,10 @@ function updateJoke(id, changes) {
     return db('jokes')
     .where({id})
     .update(changes, '*')
+}
+
+function removeJoke(id) {
+    return db('jokes')
+    .where({id})
+    .del();
 }

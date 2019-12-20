@@ -65,4 +65,21 @@ router.put('/update/:id', async (req, res) => {
   }
 });
 
+// DELETE JOKE BY ID
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    const count = await Jokes.removeJoke(req.params.id);
+    if (count > 0) {
+      res.status(200).json({ message: 'The joke has been deleted.' });
+    } else {
+      res.status(404).json({ message: `Could not find joke with given ${id}` });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'There was an error removing the joke.'
+    });
+  }
+});
+
 module.exports = router;
