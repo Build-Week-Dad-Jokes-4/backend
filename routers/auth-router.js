@@ -3,7 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const Users = require('./auth-model.js');
+const Users = require('../models/auth-model.js');
 
 const secrets = require('../config/secrets.js');
 
@@ -50,7 +50,7 @@ function getJwtToken(user) {
     };
   
     const options = {
-      expiresIn: '1hr'
+      expiresIn: '30d'
     };
   
       return jwt.sign(payload, secrets.jwtSecret, options)
