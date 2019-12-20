@@ -3,7 +3,9 @@ const db = require('../database/dbConfig.js');
 module.exports = {
     addJoke,
     findJoke,
-    findJokes
+    findJokes,
+    findJokeById,
+    updateJoke
 }
 
 async function addJoke(joke) {
@@ -32,3 +34,14 @@ function findJokes() {
     .table('jokes')
 }
 
+function findJokeById(id) {
+    return db('jokes')
+    .where({id})
+    .first();
+}
+
+function updateJoke(id, changes) {
+    return db('jokes')
+    .where({id})
+    .update(changes, '*')
+}
