@@ -3,7 +3,8 @@ const db = require('../database/dbConfig.js');
 module.exports = {
     addJoke,
     findJoke,
-    findJokes
+    findJokes,
+    findJokeById
 }
 
 async function addJoke(joke) {
@@ -30,5 +31,11 @@ function findJokes() {
     return db('jokes')
     .select()
     .table('jokes')
+}
+
+function findJokeById(id) {
+    return db('jokes')
+    .where({id})
+    .first();
 }
 
