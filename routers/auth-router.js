@@ -50,7 +50,7 @@ function getJwtToken(user) {
     };
   
     const options = {
-      expiresIn: '1hr'
+      expiresIn: '30d'
     };
   
       return jwt.sign(payload, secrets.jwtSecret, options)
