@@ -10,7 +10,7 @@ router.post('/add', (req, res) => {
 
   Jokes.addJoke(joke)
     .then(newJoke => {
-        console.log(newJoke)
+      console.log(newJoke);
       res.status(201).json(newJoke);
     })
     .catch(err => {
@@ -22,33 +22,47 @@ router.post('/add', (req, res) => {
 
 // GET ALL JOKES
 router.get('/', (req, res) => {
-    Jokes.findJokes()
+  Jokes.findJokes()
     .then(jokes => {
-        res.status(200).json(jokes);
+      res.status(200).json(jokes);
     })
     .catch(err => {
-        res.status(500).json({message: 'Failed to get jokes.'})
-    })
+      res.status(500).json({ message: 'Failed to get jokes.' });
+    });
 });
 
 // GET JOKE BY ID
 router.get('/:id', async (req, res) => {
-    try {
-        const joke = await Jokes.findJokeById(req.params.id);
-        if (joke) {
-            res.status(200).json(joke);
-        } else {
-            res.status(404).json({ message: 'Joke not found'})
-        }
+  try {
+    const joke = await Jokes.findJokeById(req.params.id);
+    if (joke) {
+      res.status(200).json(joke);
+    } else {
+      res.status(404).json({ message: 'Joke not found' });
     }
-    catch (error) {
-        console.log(error)
-        res.status(500).json({
-            message: 'Error retrieving the joke',
-        })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Error retrieving the joke'
+    });
+  }
+});
+
+// UPDATE JOKE BY ID
+router.put('/update/:id', async (req, res) => {
+  try {
+    const joke = await Jokes.updateJoke(req.params.id, req.body);
+    if (joke) {
+      res.status(200).json(joke);
+    } else {
+      res.status(404).json({ message: 'The joke could not be found' });
     }
-})
-
-
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Error updating joke.'
+    });
+  }
+});
 
 module.exports = router;
