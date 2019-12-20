@@ -18,9 +18,18 @@ exports.up = function(knex) {
       tbl.string('punchline', 128).notNullable();
 
       tbl
-        .integer('user_id')
-        .unsigned()
+        .boolean('private')
         .notNullable()
+        .defaultTo(false);
+
+      tbl
+        .boolean('public')
+        .notNullable()
+        .defaultTo(false);
+        
+      tbl
+        .integer('user_id')
+        .unsigned()       
         .references('id')
         .inTable('users')
         .onUpdate('CASCADE')
