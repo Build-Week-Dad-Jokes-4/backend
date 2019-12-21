@@ -5,25 +5,32 @@ const jwt = require('jsonwebtoken');
 
 const Users = require('../models/auth-model.js');
 
-const secrets = require('../config/secrets.js');
+// const secrets = require('../config/secrets.js');
+const secrets = process.env.JWT_SECRET;
+
 
 router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
+    console.log("TCL: hash", hash)
+    
     user.password = hash;
+    console.log("TCL: hash", hash)
     
     Users.add(user)
         .then(saved => {
             res.status(201).json(saved);
         })
         .catch(error => {
+          console.log(error)
             res.status(500).json(error);
         })
 })
 
 router.post('/login', (req, res) => {
     let {username, password} = req.body;
-    
+    console.log(username)
+    console.log(password)
     Users.findBy({ username })
     .first()
     .then(user => {
