@@ -14,6 +14,7 @@ router.post('/add', (req, res) => {
       res.status(201).json(newJoke);
     })
     .catch(err => {
+      
       res.status(500).json({
         message: 'There was an error adding joke and punchline.'
       });
