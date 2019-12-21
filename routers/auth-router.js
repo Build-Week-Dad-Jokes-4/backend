@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 
 const Users = require('../models/auth-model.js');
 
-const secrets = require('../config/secrets.js');
+// const secrets = require('../config/secrets.js');
+const secrets = process.env.JWT_SECRET;
+
 
 router.post('/register', (req, res) => {
     let user = req.body;
