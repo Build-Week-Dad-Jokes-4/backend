@@ -16,7 +16,7 @@ async function addJoke(joke) {
 
 // function addJoke(joke){
 //     console.log(joke)
-//     return db('recipes').insert(joke)
+//     return db('jokes').insert(joke)
 // }
 
 // function addJoke(jokeData) {
@@ -31,6 +31,7 @@ async function addJoke(joke) {
 //         })
 // }
 
+
 function findJoke(id) {
     return db('jokes')
     .where({id})
@@ -42,7 +43,7 @@ function findJoke(id) {
         "public",      
         "user_id"
     )
-    .orderBy('id')
+    // .orderBy('id')
     .first()
 }
 
