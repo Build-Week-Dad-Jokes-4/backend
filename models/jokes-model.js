@@ -10,7 +10,7 @@ module.exports = {
 };
 
 async function addJoke(joke) {
-  const [id] = await db('jokes').insert(joke);
+  const [id] = await db('jokes').insert(joke).returning('id');
   return findJoke(id);
 }
 
