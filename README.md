@@ -1,10 +1,14 @@
-# backend
+# Dad Jokes backend
 
+## Base Url
 
+```
+https://be-dad-jokes.herokuapp.com/api
+```
+## Auth Route
 
-# Auth
+### REGISTER
 
-## REGISTER.
 
 | Method | Endpoint                                                                                 
 | POST   | https://be-dad-jokes.herokuapp.com/api/auth/register
