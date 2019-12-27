@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 
 const Users = require('../models/auth-model.js');
 
-// const secrets = require('../config/secrets.js');
-const secrets = process.env.JWT_SECRET;
+const secrets = require('../config/secrets.js');
+// const secrets = process.env.JWT_SECRET;
 
 
 router.post('/register', (req, res) => {
@@ -46,6 +46,7 @@ router.post('/login', (req, res) => {
           }
     })
     .catch(error => {
+      console.log(error)
         res.status(500).json(error);
       });
 })
