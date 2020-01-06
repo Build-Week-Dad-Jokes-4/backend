@@ -38,7 +38,9 @@ router.post('/login', (req, res) => {
             const token = getJwtToken(user);
     
             res.status(200).json({
-              message: `Welcome ${user.username}, have a token.`,
+              id: user.id,
+              // message: `Welcome ${user.username}, have a token.`,
+              username: username,
               token
             });
           } else {

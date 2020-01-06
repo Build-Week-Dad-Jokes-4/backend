@@ -7,15 +7,18 @@ exports.up = function(knex) {
         .string('username', 128)
         .notNullable()
         .unique();
-      users.string('password', 128).notNullable();
+      users.string('password', 128)
+        .notNullable();
     })
 
     .createTable('jokes', tbl => {
       tbl.increments();
 
-      tbl.string('joke', 128).notNullable();
+      tbl.string('joke', 128)
+      .notNullable();
 
-      tbl.string('punchline', 128).notNullable();
+      tbl.string('punchline', 128)
+      .notNullable();
 
       tbl
         .boolean('private')
