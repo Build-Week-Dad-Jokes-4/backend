@@ -5,7 +5,7 @@ const Jokes = require('../models/jokes-model.js');
 const authenticate = require('../middleware/authenticate-middleware.js');
 
 // POST JOKES
-router.post('/add', (req, res) => {
+router.post('/add', authenticate, (req, res) => {
   const joke = (req.body);
   console.log("TCL: joke", joke)
   Jokes.addJoke(joke)
@@ -33,7 +33,7 @@ router.post('/add', (req, res) => {
 //     }
 // })
 
-// GET ALL JOKES
+// GET ALL PUBLIC JOKES
 router.get('/', (req, res) => {
   Jokes.findJokes()
     .then(jokes => {
@@ -43,6 +43,44 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Failed to get jokes.' });
     });
 });
+
+
+//GET ALL PRIVATE JOKES
+router.get('/userJokes/', authenticate, (req, res) => {
+
+  // Jokes.findJokes()
+  //   .then(jokes => {
+  //     res.status(200).json(jokes);
+  //   })
+  //   .catch(err => {
+  //     res.status(500).json({ message: 'Failed to get jokes.' });
+  //   });
+
+  const user_id = req.body;
+  console.log(user_id);
+
+  Jokes.findJokeBy({ user_id })
+    .then(jokes => {
+      res.status(200).json(jokes);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ message: "Could not get private jokes" });
+    });
+
+  // const user_id = req.params.id
+  // console.log(user_id)
+
+  // Jokes.findUserJokes({user_id})
+  // .then(jokes => {
+  //   res.status(200).json(jokes);
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  //   res.status(500).json({message: 'Could not get private jokes'});
+  // })  
+})
+
 
 // GET JOKE BY ID
 router.get('/:id', async (req, res) => {
@@ -62,7 +100,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // UPDATE JOKE BY ID
-router.put('/update/:id', async (req, res) => {
+router.put('/update/:id', authenticate, async (req, res) => {
   try {
     const joke = await Jokes.updateJoke(req.params.id, req.body);
     if (joke) {
@@ -79,7 +117,7 @@ router.put('/update/:id', async (req, res) => {
 });
 
 // DELETE JOKE BY ID
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', authenticate, async (req, res) => {
   try {
     const count = await Jokes.removeJoke(req.params.id);
     if (count > 0) {
