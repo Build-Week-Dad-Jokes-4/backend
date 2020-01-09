@@ -56,17 +56,22 @@ router.get('/userJokes/', authenticate, (req, res) => {
   //     res.status(500).json({ message: 'Failed to get jokes.' });
   //   });
 
-  const user_id = req.body;
-  console.log(user_id);
+  // const user_id = req.decodedJWT.subject;
+  // console.log(user_id);
 
-  Jokes.findJokeBy({ user_id })
-    .then(jokes => {
-      res.status(200).json(jokes);
+  // Jokes.findUserJokes({ user_id })
+  //   .then(jokes => {
+  //     res.status(200).json(jokes);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //     res.status(500).json({ message: "Could not get private jokes" });
+  //   });Z
+
+    const id = req.params.id;
+    Jokes.findUserJokes(id).then(jokes => {
+        res.status(200).json(jokes);
     })
-    .catch(error => {
-      console.log(error);
-      res.status(500).json({ message: "Could not get private jokes" });
-    });
 
   // const user_id = req.params.id
   // console.log(user_id)

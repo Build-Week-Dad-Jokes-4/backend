@@ -36,7 +36,7 @@ function findJokeBy(filter) {
 }
 
 function findUserJokes(id){
-  return db('jokes').where('user_id', users.id);
+  return db('jokes').where('user_id', id);
 }
 
 function findJokes() {
