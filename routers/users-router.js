@@ -2,6 +2,9 @@ const router = require('express').Router();
 
 const Users = require('../models/users-model');
 
+const authenticate = require('../middleware/authenticate-middleware.js');
+
+
 // GET ALL USERS
 router.get('/', (req, res) => {
   Users.find()
@@ -31,5 +34,23 @@ router.get('/:id', async (req, res) => {
     });
   }
 });
+
+
+//GET ALL PRIVATE JOKES
+router.get('/userJokes/', authenticate, (req, res) => {
+  const id = req.decodedToken.subject;
+  console.log(id);
+
+  Jokes.findUserJokes({id})
+    .then(users => {
+      // db('jokes')
+      // .where('jokes.user_id', id)
+      res.status(200).json(jokes);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ message: "Could not get private jokes" });
+    });
+})
 
 module.exports = router;

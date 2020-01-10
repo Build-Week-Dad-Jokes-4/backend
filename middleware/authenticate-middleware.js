@@ -20,20 +20,4 @@ module.exports = (req, res, next) => {
   } else {
     res.status(401).json({ you: 'Token required!' });
   }
-
-  // if (token) {
-  //   next();
-  // } else if (token) {
-  //   jwt.verify(token, secrets.jwtSecret, (err, decodedJwt) => {
-  //     if (err) {
-  //       res.status(401).json({ message: "bad token" });
-  //     } else {
-  //       req.decodedJwt = decodedJwt;
-  //       next();
-  //     }
-  //   });
-  // } else {
-  //   res.status(401).json({ message: "access denied" });
-  // }
-
 };

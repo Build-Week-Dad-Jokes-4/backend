@@ -5,7 +5,6 @@ module.exports = {
   findJoke,
   findJokes,
   findJokeBy,
-  findUserJokes,
   findJokeById,
   updateJoke,
   removeJoke
@@ -35,9 +34,6 @@ function findJokeBy(filter) {
   return db('jokes').where(filter);
 }
 
-function findUserJokes(id){
-  return db('jokes').where('user_id', id);
-}
 
 function findJokes() {
   return db('jokes')

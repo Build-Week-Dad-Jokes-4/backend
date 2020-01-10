@@ -5,7 +5,8 @@ module.exports = {
   find,
   findBy,
   findById,
-  findUser
+  findUser,
+  findUserJokes
 };
 
 function find() {
@@ -35,4 +36,9 @@ function findUser(id) {
     .select('id', 'username')
     .orderBy('id')
     .first();
+}
+
+function findUserJokes(id){
+  return db('users')
+  .where({id})    
 }

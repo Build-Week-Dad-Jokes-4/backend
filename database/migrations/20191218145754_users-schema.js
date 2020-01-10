@@ -33,8 +33,8 @@ exports.up = function(knex) {
       tbl
         .integer('user_id')
         .unsigned()
-        // .inTable('users')
-        .references('users.id')        
+        .references('id')        
+        .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
     });

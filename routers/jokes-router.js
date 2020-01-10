@@ -4,6 +4,9 @@ const Jokes = require('../models/jokes-model.js');
 
 const authenticate = require('../middleware/authenticate-middleware.js');
 
+const jwt = require('jsonwebtoken');
+const {getJwtToken} = require('./auth-router.js');
+
 // POST JOKES
 router.post('/add', authenticate, (req, res) => {
   const joke = (req.body);
@@ -43,48 +46,6 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Failed to get jokes.' });
     });
 });
-
-
-//GET ALL PRIVATE JOKES
-router.get('/userJokes/', authenticate, (req, res) => {
-
-  // Jokes.findJokes()
-  //   .then(jokes => {
-  //     res.status(200).json(jokes);
-  //   })
-  //   .catch(err => {
-  //     res.status(500).json({ message: 'Failed to get jokes.' });
-  //   });
-
-  // const user_id = req.decodedJWT.subject;
-  // console.log(user_id);
-
-  // Jokes.findUserJokes({ user_id })
-  //   .then(jokes => {
-  //     res.status(200).json(jokes);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //     res.status(500).json({ message: "Could not get private jokes" });
-  //   });Z
-
-    const id = req.params.id;
-    Jokes.findUserJokes(id).then(jokes => {
-        res.status(200).json(jokes);
-    })
-
-  // const user_id = req.params.id
-  // console.log(user_id)
-
-  // Jokes.findUserJokes({user_id})
-  // .then(jokes => {
-  //   res.status(200).json(jokes);
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  //   res.status(500).json({message: 'Could not get private jokes'});
-  // })  
-})
 
 
 // GET JOKE BY ID
