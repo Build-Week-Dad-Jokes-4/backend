@@ -1,5 +1,7 @@
 # Dad Jokes backend
 
+This is a build-week project for Lambda that uses React as a platform. It will be able to fetch jokes from an API, register new users, add jokes as well as delete the and backend with SQLite.
+
 ## Base Url
 
 ```
